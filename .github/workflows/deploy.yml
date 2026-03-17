@@ -1,0 +1,44 @@
+name: DevOps Agent - Hello World
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Target environment'
+        required: false
+        default: 'production'
+        type: choice
+        options:
+          - production
+          - staging
+          - development
+      version:
+        description: 'Version or branch to deploy'
+        required: false
+        default: 'main'
+      triggered_by:
+        description: 'Who triggered this'
+        required: false
+        default: 'devops-agent-sdk'
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Hello World
+        run: echo "Hello from DevOps Agent SDK!"
+
+      - name: Show context
+        run: |
+          echo "environment : ${{ inputs.environment }}"
+          echo "version     : ${{ inputs.version }}"
+          echo "triggered_by: ${{ inputs.triggered_by }}"
+          echo "run_id      : ${{ github.run_id }}"
+          echo "sha         : ${{ github.sha }}"
+
+      - name: Done
+        run: echo "Workflow complete"
