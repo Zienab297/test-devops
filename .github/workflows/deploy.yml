@@ -4,27 +4,21 @@ on:
   workflow_dispatch:
     inputs:
       environment:
-        description: 'Target environment'
+        description: Target environment
         required: false
-        default: 'production'
-        type: choice
-        options:
-          - production
-          - staging
-          - development
+        default: production
       version:
-        description: 'Version or branch to deploy'
+        description: Version or branch
         required: false
-        default: 'main'
+        default: main
       triggered_by:
-        description: 'Who triggered this'
+        description: Who triggered this
         required: false
-        default: 'devops-agent-sdk'
+        default: devops-agent-sdk
 
 jobs:
   hello:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
