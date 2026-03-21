@@ -22,10 +22,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Hello World
         run: echo "Hello from DevOps Agent SDK!"
-
       - name: Show context
         run: |
           echo "environment : ${{ inputs.environment }}"
@@ -33,6 +31,5 @@ jobs:
           echo "triggered_by: ${{ inputs.triggered_by }}"
           echo "run_id      : ${{ github.run_id }}"
           echo "sha         : ${{ github.sha }}"
-
       - name: Done
         run: echo "Workflow complete"
