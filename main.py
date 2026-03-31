@@ -1,4 +1,4 @@
-from fastapi import FastAP
+from fastapi import FastAPI
 
 app = FastAPI()
 
@@ -8,7 +8,7 @@ def health():
 
 @app.get("/")
 def root():
-return {"message": "Hello"}
+    return {"message": "Hello"}
 
 if __name__ == "__main__":
     import uvicorn
